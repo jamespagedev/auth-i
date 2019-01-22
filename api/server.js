@@ -48,10 +48,12 @@ server.get('/', (req, res) => {
 
 const registerRouter = require('./routes/registerRouter.js');
 const loginRouter = require('./routes/loginRouter.js');
+const logoutRouter = require('./routes/logoutRouter.js');
 const usersRouter = require('./routes/usersRouter.js');
 
 server.use('/api/register', registerRouter);
 server.use('/api/login', loginRouter);
+server.use('/api/logout', logoutRouter);
 server.use('/api/users', usersRouter);
 
 /***************************************************************************************************
