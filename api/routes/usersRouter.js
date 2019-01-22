@@ -3,26 +3,17 @@
  **************************************************************************************************/
 const express = require('express');
 const db = require('../../data/helpers/dbUsrsHelpers.js');
-const bcrypt = require('bcryptjs');
 const router = express.Router();
 
 /***************************************************************************************************
  ******************************************** middleware *******************************************
  **************************************************************************************************/
-function protected(req, res, next) {
-  // if a session exists AND the user is logged in... next
-  // else bounce the user
-  if (req.session && req.session.userId) {
-    next()
-  } else {
-    res.status(401).json({ message: 'you shall not pass, not authenticated' })
-  }
-}
+const authenticate = require('../../middleware/userAuth.js');
 
 /***************************************************************************************************
  ********************************************** routes *********************************************
  **************************************************************************************************/
-router.get('/', protected, (req, res) => {
+router.get('/', authenticate, (req, res) => {
   db.getAllUsers()
     .then(Users => {
       res.status(200).json(Users)

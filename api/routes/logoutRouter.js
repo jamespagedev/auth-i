@@ -2,8 +2,6 @@
  ******************************************* dependencies ******************************************
  **************************************************************************************************/
 const express = require('express');
-const db = require('../../data/helpers/dbLgnHelpers.js');
-const bcrypt = require('bcryptjs');
 const router = express.Router();
 
 /***************************************************************************************************
@@ -15,7 +13,7 @@ const router = express.Router();
  ********************************************** routes *********************************************
  **************************************************************************************************/
 router.get('/', (req, res) => {
-  if (req.session) {
+  if (req.session.userId) {
     req.session.destroy(err => {
       if (err) {
         res.status(500).send('you can never leave');

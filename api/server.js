@@ -16,9 +16,6 @@ const sessionConfig = {
   name: 'TutorialDemo', // default is sid
   secret: 'asdfasdasa', // used for cookie
   cookie: {
-    // maxAge: 1000 * 60 * 10, // session will be good for 10 minutes (milliseconds)
-    // maxAge: 1000 * 15, // session will be good for 15 seconds (milliseconds)
-    // maxAge: 1000 * 60 * 5, // session will be good for 5 minutes (milliseconds)
     maxAge: 1000 * 60, // session will be good for 1 minute (milliseconds)
     secure: false // Only send the cookie over https, Set to true in production 
   },
