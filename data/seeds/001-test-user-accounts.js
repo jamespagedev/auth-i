@@ -9,19 +9,19 @@ exports.seed = function (knex, Promise) {
       return knex('users').insert([
         {
           username: 'James',
-          password: 'pass123'
+          password: '$2a$14$PCThudlabVgN8pdoAGUsFOGDpuz76TTSh4LYPXyi5XNfGwXPbgaGm' // pass123
         },
         {
           username: 'Saywer',
-          password: 'Password123'
+          password: 'Password123' // Password123
         },
         {
           username: 'Luis',
-          password: 'Pswd^$haha'
+          password: 'Pswd^$haha' // Pswd^$haha
         },
         {
           username: 'RandomUser',
-          password: 'I%Am^Random&123'
+          password: 'I%Am^Random&123' // I%Am^Random&123
         }
       ]);
     });

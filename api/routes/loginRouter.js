@@ -23,9 +23,7 @@ router.post('/', (req, res) => {
     .then(user => {
       // If user object was obtained AND...
       // the client password matches the db hash password
-      console.log(userCreds);
-      console.log(user);
-      if (user && bcrypt.compareSync(userCreds.password === user.password)) {
+      if (user && bcrypt.compareSync(userCreds.password, user.password)) {
         // go over sessions and cookies tomorrow (tuesday - 1/22/2019)
         res.status(200).send('Logged in');
       } else {
