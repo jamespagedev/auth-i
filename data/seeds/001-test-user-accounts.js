@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+const db = require('../helpers/dbRegHelpers.js');
 
 exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
@@ -9,19 +11,19 @@ exports.seed = function (knex, Promise) {
       return knex('users').insert([
         {
           username: 'James',
-          password: '$2a$14$PCThudlabVgN8pdoAGUsFOGDpuz76TTSh4LYPXyi5XNfGwXPbgaGm' // pass123
+          password: bcrypt.hashSync('pass123', db.settings.pwdHashLength)
         },
         {
           username: 'Saywer',
-          password: 'Password123' // Password123
+          password: bcrypt.hashSync('Password123', db.settings.pwdHashLength)
         },
         {
           username: 'Luis',
-          password: 'Pswd^$haha' // Pswd^$haha
+          password: bcrypt.hashSync('Pswd^$haha', db.settings.pwdHashLength)
         },
         {
           username: 'RandomUser',
-          password: 'I%Am^Random&123' // I%Am^Random&123
+          password: bcrypt.hashSync('I%Am^Random&123', db.settings.pwdHashLength)
         }
       ]);
     });

@@ -17,10 +17,9 @@ const router = express.Router();
 router.post('/', (req, res) => {
   // Precondition - Username must be unique (not used in database)
   const newUserCreds = req.body;
-  const hashLengthComplexity = 14; // 14 is a good baseline for time complexity when comparing password/hash for login
 
   // Creates a hash password to store in the database...
-  newUserCreds.password = bcrypt.hashSync(newUserCreds.password, hashLengthComplexity);
+  newUserCreds.password = bcrypt.hashSync(newUserCreds.password, db.settings.pwdHashLength);
 
   // Adds a single user to the database
   db.addUser(newUserCreds)
